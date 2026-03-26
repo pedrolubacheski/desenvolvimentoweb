@@ -12,7 +12,30 @@ body {
     rgba(253, 29, 29, 0.7),
     rgba(252, 176, 69, 0.8)
   );
-  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+    "header header"
+    "main aside"
+    "footer footer";
+  gap: 20px;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
 }
 
 .lista {
@@ -44,35 +67,68 @@ body {
   cursor: pointer;
 }
 
-.container {
-  max-width: 1100px;
-  margin: 40px auto;
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: aside;
+}
+
+footer {
+  grid-area: footer;
+}
+
+#section_header {
+  text-align: center;
+}
+
+.lista {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 25px;
+}
+
+.lista li {
+  list-style-type: none;
+}
+
+.lista a {
   background-color: white;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: black;
+  transition: ease 0.5s;
+}
+
+.lista a:hover {
+  background-color: blueviolet;
+  color: white;
+  cursor: pointer;
 }
 
 article {
   background-color: white;
-  max-width: 800px;
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #ddd;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
 }
 
 article h2 {
   font-size: 28px;
-  color: #000000;
   margin-bottom: 10px;
 }
 
 article p {
   margin-bottom: 15px;
-  color: #000000;
 }
 
 figure img {
@@ -81,15 +137,7 @@ figure img {
   margin-top: 10px;
 }
 
-figcaption {
-  font-size: 14px;
-  color: #777;
-  margin-top: 5px;
-}
-
 aside {
-  max-width: 800px;
-  margin: 30px auto;
   padding: 15px;
 }
 
@@ -113,6 +161,22 @@ aside a:hover {
 footer {
   text-align: center;
   padding: 20px;
-  color: black;
-  margin-top: 30px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+  }
+
+  .lista {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 }
